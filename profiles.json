@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Mason",
+    "colour": "red",
+    "animal": "dog",
+    "hobby": "playing tennis",
+    "food": "chocolate cake"
+  },
+  {
+    "id": 2,
+    "name": "Lily",
+    "colour": "blue",
+    "animal": "zebra",
+    "hobby": "riding a bike",
+    "food": "strawberries"
+  },
+  {
+    "id": 3,
+    "name": "Ben",
+    "colour": "blue",
+    "animal": "monkey",
+    "hobby": "swimming",
+    "food": "bananas"
+  },
+  {
+    "id": 4,
+    "name": "Ania",
+    "colour": "orange",
+    "animal": "bird",
+    "hobby": "rollerblading",
+    "food": "pasta"
+  },
+  {
+    "id": 5,
+    "name": "Noah",
+    "colour": "yellow",
+    "animal": "shark",
+    "hobby": "making cakes",
+    "food": "cheese sandwiches"
+  },
+  {
+    "id": 6,
+    "name": "Sophie",
+    "colour": "pink",
+    "animal": "cat",
+    "hobby": "drawing",
+    "food": "biscuits"
+  },
+  {
+    "id": 7,
+    "name": "Dev",
+    "colour": "green",
+    "animal": "rabbit",
+    "hobby": "playing board games",
+    "food": "pizza"
+  },
+  {
+    "id": 8,
+    "name": "Tess",
+    "colour": "purple",
+    "animal": "snake",
+    "hobby": "playing football",
+    "food": "grapes"
+  }
+]
