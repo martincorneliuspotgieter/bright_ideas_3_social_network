@@ -10,6 +10,7 @@ fetch('profiles.json')
       card.className = `card ${profile.colour}`; // Style it using their favorite color!
       
       card.innerHTML = `
+        <img src="${profile.avatar}" alt="${profile.name}'s avatar" style="width: 100px; height: auto;">
         <h3>${profile.name}</h3>
         <p><strong>Favourite Animal:</strong> ${profile.animal}</p>
         <p><strong>Favourite Hobby:</strong> ${profile.hobby}</p>

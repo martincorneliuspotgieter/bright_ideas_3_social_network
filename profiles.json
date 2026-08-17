@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Mason",
+    "avatar": "images/mason.png",
     "colour": "red",
     "animal": "dog",
     "hobby": "playing tennis",
@@ -10,6 +11,7 @@
   {
     "id": 2,
     "name": "Lily",
+    "avatar": "images/lily.png",
     "colour": "blue",
     "animal": "zebra",
     "hobby": "riding a bike",
@@ -18,6 +20,7 @@
   {
     "id": 3,
     "name": "Ben",
+    "avatar": "images/ben.png",
     "colour": "blue",
     "animal": "monkey",
     "hobby": "swimming",
@@ -26,6 +29,7 @@
   {
     "id": 4,
     "name": "Ania",
+    "avatar": "images/ania.png",
     "colour": "orange",
     "animal": "bird",
     "hobby": "rollerblading",
@@ -34,6 +38,7 @@
   {
     "id": 5,
     "name": "Noah",
+    "avatar": "images/noah.png",
     "colour": "yellow",
     "animal": "shark",
     "hobby": "making cakes",
@@ -42,6 +47,7 @@
   {
     "id": 6,
     "name": "Sophie",
+    "avatar": "images/sophie.png",
     "colour": "pink",
     "animal": "cat",
     "hobby": "drawing",
@@ -50,6 +56,7 @@
   {
     "id": 7,
     "name": "Dev",
+    "avatar": "images/dev.png",
     "colour": "green",
     "animal": "rabbit",
     "hobby": "playing board games",
@@ -58,6 +65,7 @@
   {
     "id": 8,
     "name": "Tess",
+    "avatar": "images/tess.png",
     "colour": "purple",
     "animal": "snake",
     "hobby": "playing football",
