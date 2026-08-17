@@ -7,9 +7,11 @@ fetch('profiles.json')
     // Loop through each profile and create a card for them
     profiles.forEach(profile => {
       const card = document.createElement('div');
-      card.className = `card ${profile.colour}`; // Style it using their favorite color!
-      
-      card.innerHTML = `
+      card.className = 'card';
+  
+        // This directly sets the card background using the color string from JSON!
+        card.style.backgroundColor = profile.colour;
+        card.innerHTML = `
         <img src="${profile.avatar}" alt="${profile.name}'s avatar" style="width: 100px; height: auto;">
         <h3>${profile.name}</h3>
         <p><strong>Favourite Animal:</strong> ${profile.animal}</p>
