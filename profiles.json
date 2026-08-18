@@ -6,7 +6,8 @@
     "colour": "red",
     "animal": "dog",
     "hobby": "playing tennis",
-    "food": "chocolate cake"
+    "food": "chocolate cake",
+    "class": "Book class"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "colour": "blue",
     "animal": "zebra",
     "hobby": "riding a bike",
-    "food": "strawberries"
+    "food": "strawberries",
+    "class": "Book class"
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "colour": "blue",
     "animal": "monkey",
     "hobby": "swimming",
-    "food": "bananas"
+    "food": "bananas",
+    "class": "Book class"
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@
     "colour": "orange",
     "animal": "bird",
     "hobby": "rollerblading",
-    "food": "pasta"
+    "food": "pasta",
+    "class": "Book class"
   },
   {
     "id": 5,
@@ -42,7 +46,8 @@
     "colour": "yellow",
     "animal": "shark",
     "hobby": "making cakes",
-    "food": "cheese sandwiches"
+    "food": "cheese sandwiches",
+    "class": "Book class"
   },
   {
     "id": 6,
@@ -51,7 +56,8 @@
     "colour": "pink",
     "animal": "cat",
     "hobby": "drawing",
-    "food": "biscuits"
+    "food": "biscuits",
+    "class": "Book class"
   },
   {
     "id": 7,
@@ -60,7 +66,8 @@
     "colour": "green",
     "animal": "rabbit",
     "hobby": "playing board games",
-    "food": "pizza"
+    "food": "pizza",
+    "class": "Book class"
   },
   {
     "id": 8,
@@ -69,6 +76,7 @@
     "colour": "purple",
     "animal": "snake",
     "hobby": "playing football",
-    "food": "grapes"
+    "food": "grapes",
+    "class": "Book class"
   }
 ]

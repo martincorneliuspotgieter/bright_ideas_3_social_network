@@ -11,7 +11,7 @@ fetch('profiles.json')
   
         // This directly sets the card background using the color string from JSON!
         card.style.backgroundColor = profile.colour;
-        card.style.opacity = "0.5"; // 80% visible (adjust from 0.0 to 1.0)
+        card.style.backgroundColor = `color-mix(in srgb, ${profile.colour} 50%, transparent)`;
         card.innerHTML = `
         <img src="${profile.avatar}" alt="${profile.name}'s avatar" style="width: 100px; height: auto;">
         <h3>${profile.name}</h3>
