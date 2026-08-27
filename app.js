@@ -2,6 +2,20 @@
 const SHEET_ID = '1T-7TAi-EQE0Fwk34DUOqGkkCVDFOb5v9lWRebExhQI8';
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
+function checkPassword() {
+  const secret = "esl2026"; // Change this to whatever password you want!
+  const userInput = document.getElementById('pass-input').value;
+
+  if (userInput === secret) {
+    // Hide password screen and show main content
+    document.getElementById('password-overlay').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  } else {
+    // Show error message
+    document.getElementById('error-msg').style.display = 'block';
+  }
+}
+
 fetch(SHEET_URL)
   .then(res => res.text())
   .then(text => {
