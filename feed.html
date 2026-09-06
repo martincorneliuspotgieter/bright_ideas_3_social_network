@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ESL Class Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6f8;
+        }
+
+        /* Password Modal */
+        #password-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #ffffff;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999;
+        }
+        #password-box {
+            border: 2px solid #333; padding: 30px;
+            border-radius: 10px; background: #f9f9f9;
+            text-align: center;
+        }
+        input, button {
+            font-family: inherit;
+            padding: 8px 12px;
+            font-size: 1rem;
+        }
+
+        #main-content { display: none; max-width: 600px; margin: 0 auto; }
+        
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .nav-btn {
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        /* Timeline Post Styling */
+        .feed-container { display: flex; flex-direction: column; gap: 20px; }
+        .post-card {
+            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .post-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ccc;
+        }
+        .post-author { margin: 0; font-size: 1.1rem; }
+        .post-meta { font-size: 0.85rem; color: #666; }
+        .post-content {
+            background-color: #f9f9f9;
+            border-left: 4px solid #007bff;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Password Screen -->
+    <div id="password-overlay">
+        <div id="password-box">
+            <h2>ESL Class Portal</h2>
+            <p>Please enter the class password:</p>
+            <input type="password" id="pass-input" placeholder="Password" onkeypress="if(event.key === 'Enter') checkPassword()">
+            <button onclick="checkPassword()">Enter</button>
+            <p id="error-msg" style="color: red; display: none;">Incorrect password!</p>
+        </div>
+    </div>
+
+    <!-- Protected Feed Content -->
+    <div id="main-content">
+        <div class="header-nav">
+            <h1>Class Feed & Music</h1>
+            <a href="index.html" class="nav-btn">View Student Cards</a>
+        </div>
+        
+        <div id="feed-container" class="feed-container"></div>
+    </div>
+
+    <script src="feed.js"></script>
+</body>
+</html>
