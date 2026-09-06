@@ -13,6 +13,13 @@ function checkPassword() {
   }
 }
 
+// Helper function to extract YouTube Video ID from standard YouTube links
+function getYouTubeEmbedUrl(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : null;
+}
+
 fetch(SHEET_URL)
   .then(res => res.text())
   .then(text => {
@@ -31,27 +38,22 @@ fetch(SHEET_URL)
       let date = '';
       const sharedItems = [];
 
-      // 1. Process the entire row in one clean pass
       headers.forEach((header, index) => {
         const cell = row ? row.c[index] : null;
         let value = (cell && cell.v !== null && cell.v !== undefined) ? cell.v.toString().trim() : '';
 
         const lowerHeader = header.toLowerCase().replace(/_/g, ' ');
 
-        // Identity checks
         if (lowerHeader === 'name') name = value;
         else if (lowerHeader === 'avatar') avatar = value;
         else if (lowerHeader === 'class') className = value;
         else if (lowerHeader === 'shared date' || lowerHeader === 'date') date = value;
-        
-        // 2. Automatically catch ANY column starting with "shared" that has content
         else if (lowerHeader.startsWith('shared') && value.length > 0) {
-          const categoryName = header.replace(/_/g, ' '); // e.g., "shared_film" -> "shared film"
+          const categoryName = header.replace(/_/g, ' ');
           sharedItems.push({ category: categoryName, content: value });
         }
       });
 
-      // 3. Create a feed post for every shared item found for this student
       sharedItems.forEach(item => {
         posts.push({
           name: name || 'Anonymous Student',
@@ -77,10 +79,31 @@ function renderFeed(posts) {
     return;
   }
 
-  // Render posts (newest items at the top)
   posts.reverse().forEach(post => {
     const postCard = document.createElement('div');
     postCard.className = 'post-card';
+
+    // Check if the content is a YouTube link
+    const embedUrl = getYouTubeEmbedUrl(post.content);
+
+    let contentHTML = '';
+    if (embedUrl) {
+      // Render responsive YouTube iframe
+      contentHTML = `
+        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+          <iframe 
+            src="${embedUrl}" 
+            title="YouTube video player" 
+            style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+    } else {
+      // Fallback for regular text entries (like destinations or films)
+      contentHTML = `<p style="margin:0;"><strong>${post.category}:</strong> ${post.content}</p>`;
+    }
 
     postCard.innerHTML = `
       <div class="post-header">
@@ -91,7 +114,7 @@ function renderFeed(posts) {
         </div>
       </div>
       <div class="post-content">
-        <p style="margin:0;"><strong>${post.category}:</strong> ${post.content}</p>
+        ${contentHTML}
       </div>
     `;
 
