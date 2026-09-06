@@ -28,31 +28,40 @@ fetch(SHEET_URL)
       let name = '';
       let avatar = '';
       let className = '';
-      let song = '';
       let date = '';
+      const sharedItems = [];
 
+      // 1. Process the entire row in one clean pass
       headers.forEach((header, index) => {
         const cell = row ? row.c[index] : null;
         let value = (cell && cell.v !== null && cell.v !== undefined) ? cell.v.toString().trim() : '';
 
         const lowerHeader = header.toLowerCase().replace(/_/g, ' ');
+
+        // Identity checks
         if (lowerHeader === 'name') name = value;
         else if (lowerHeader === 'avatar') avatar = value;
         else if (lowerHeader === 'class') className = value;
-        else if (lowerHeader === 'shared song' || lowerHeader === 'song') song = value;
         else if (lowerHeader === 'shared date' || lowerHeader === 'date') date = value;
+        
+        // 2. Automatically catch ANY column starting with "shared" that has content
+        else if (lowerHeader.startsWith('shared') && value.length > 0) {
+          const categoryName = header.replace(/_/g, ' '); // e.g., "shared_film" -> "shared film"
+          sharedItems.push({ category: categoryName, content: value });
+        }
       });
 
-      // Only add to feed if student has shared a song
-      if (song.length > 0) {
+      // 3. Create a feed post for every shared item found for this student
+      sharedItems.forEach(item => {
         posts.push({
           name: name || 'Anonymous Student',
-          avatar: avatar || 'https://via.placeholder.com/50?text=ESL',
+          avatar: avatar || '',
           className: className || 'ESL Class',
-          song: song,
+          category: item.category,
+          content: item.content,
           date: date || 'Recently Shared'
         });
-      }
+      });
     });
 
     renderFeed(posts);
@@ -64,25 +73,25 @@ function renderFeed(posts) {
   feedContainer.innerHTML = '';
 
   if (posts.length === 0) {
-    feedContainer.innerHTML = '<p>No shared songs or updates yet!</p>';
+    feedContainer.innerHTML = '<p>No updates shared yet!</p>';
     return;
   }
 
-  // Render posts (newest additions at the top)
+  // Render posts (newest items at the top)
   posts.reverse().forEach(post => {
     const postCard = document.createElement('div');
     postCard.className = 'post-card';
 
     postCard.innerHTML = `
       <div class="post-header">
-        <img src="${post.avatar}" alt="${post.name}'s avatar" class="post-avatar">
+        ${post.avatar ? `<img src="${post.avatar}" alt="${post.name}'s avatar" class="post-avatar">` : ''}
         <div>
           <h3 class="post-author">${post.name}</h3>
           <span class="post-meta">${post.className} • ${post.date}</span>
         </div>
       </div>
       <div class="post-content">
-        <p style="margin:0;"><strong>🎵 Shared Song:</strong> ${post.song}</p>
+        <p style="margin:0;"><strong>${post.category}:</strong> ${post.content}</p>
       </div>
     `;
 
